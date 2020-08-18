@@ -15,6 +15,7 @@ export default () => (
       }
     `}
     render={data => (
+    <section className="">
       <div className="hero-header">
         <div className="headline">{data.site.siteMetadata.home.title}</div>
         <div 
@@ -23,6 +24,7 @@ export default () => (
         />
         <Link to='/contact' className="button -primary">Get in touch &rarr;</Link>
       </div>
+      </section>
     )}
   />
 )

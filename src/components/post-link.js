@@ -1,7 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
 
 const PostLink = ({ post }) => (
+    <motion.div
+      magic
+      magicId="magic-image"
+    >
   <article className="card ">
     <Link to={post.frontmatter.path}>
       {!!post.frontmatter.thumbnail && (
@@ -17,5 +22,6 @@ const PostLink = ({ post }) => (
       <div className="post-meta">{post.frontmatter.date}</div>
     </header>
   </article>
+  </motion.div>
 )
 export default PostLink
