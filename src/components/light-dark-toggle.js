@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { motion } from "framer-motion"
 
@@ -6,6 +7,10 @@ import { motion } from "framer-motion"
 
 export function Light_dark_toggle(props) {
     const [isDarkMode, setDarkMode] = React.useState(true)
+    
+//     React.useEffect(() => {
+//         setDarkMode([isDarkMode])
+//     }, [])
 
     const sunVariants = {
         visible: { opacity: 1, rotate: 360 },

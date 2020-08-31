@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import Navigation from "../components/navigation"
-import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/themes/prism-okaidia.css'
 import PropTypes from "prop-types"
 import { motion, AnimatePresence } from 'framer-motion'
+import Navigation from "../components/navigation"
 
 const duration = 0.5
 
@@ -43,12 +43,8 @@ const Layout = ({ children, location }) => {
   return (
     <div className="site-wrapper">
     
-      <header className="site-header">
-        <div className="site-title">
-          <Link to="/">{data.site.siteMetadata.title}</Link>
-        </div>
-        <Navigation />
-      </header>
+    
+    <Navigation/>
       
 
       <div className="main-content">
