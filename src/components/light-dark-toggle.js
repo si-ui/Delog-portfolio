@@ -1,16 +1,28 @@
-import React, { useEffect } from "react"
-
+import React, { useEffect, useState } from "react"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { motion } from "framer-motion"
 
 // Learn more: https://framer.com/api
 
 export function Light_dark_toggle(props) {
-    const [isDarkMode, setDarkMode] = React.useState(true)
-    
-//     React.useEffect(() => {
-//         setDarkMode([isDarkMode])
-//     }, [])
+    const [darkMode, setDarkMode] = React.useState({
+        isDarkMode: props.isDarkMode,
+    })
+
+    React.useEffect(() => {
+        if (darkMode.isDarkMode !== props.isDarkMode) {
+            setDarkMode({
+                isDarkMode: props.isDarkMode,
+            })
+        }
+    }, [props.isDarkMode])
+
+    const flipMode = () => {
+        props.onValueChange(!darkMode.isDarkMode)
+        setDarkMode({
+            isDarkMode: !darkMode.isDarkMode,
+        })
+    }
 
     const sunVariants = {
         visible: { opacity: 1, rotate: 360 },
@@ -21,27 +33,27 @@ export function Light_dark_toggle(props) {
         visible: { opacity: 1, rotate: 360 },
         notvisible: { opacity: 0, rotate: -360 },
     }
-    
 
     return (
-           <div style={{ width: 30, position: "relative" }}>
-            {/* sun */}
+        <motion.div
+            onTap={flipMode}
+            style={{ width: 30, position: "relative" }}
+        >
             <motion.svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                initial={darkMode.isDarkMode ? "notvisible" : "visible"}
+                animate={darkMode.isDarkMode ? "notvisible" : "visible"}
                 variants={sunVariants}
-                initial={"visible"}
-                animate={isDarkMode ? "notvisible" : "visible"}
                 transition={{
                     type: "spring",
                     stiffness: 300,
                     damping: 20,
                     duration: 1,
                 }}
-                onTap={() => setDarkMode(!isDarkMode)}
                 style={{
                     cursor: "pointer",
                     top: 0,
@@ -63,7 +75,6 @@ export function Light_dark_toggle(props) {
                 />
             </motion.svg>
 
-            {/* moon */}
             <motion.svg
                 width="24"
                 height="24"
@@ -71,15 +82,14 @@ export function Light_dark_toggle(props) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 variants={moonVariants}
-                initial={"notvisible"}
-                animate={isDarkMode ? "visible" : "notvisible"}
+                initial={darkMode.isDarkMode ? "visible" : "notvisible"}
+                animate={darkMode.isDarkMode ? "visible" : "notvisible"}
                 transition={{
                     type: "spring",
                     stiffness: 300,
                     damping: 20,
                     duration: 1,
                 }}
-                onTap={() => setDarkMode(!isDarkMode)}
                 style={{
                     cursor: "pointer",
                     top: 0,
@@ -94,11 +104,13 @@ export function Light_dark_toggle(props) {
                     fill="white"
                 />
             </motion.svg>
-        </div>
+        </motion.div>
     )
 }
 
 Light_dark_toggle.defaultProps = {
     height: 24,
     width: 24,
+    isDarkMode: false,
+    onValueChange: () => null,
 }
