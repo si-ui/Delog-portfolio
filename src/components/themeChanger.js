@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { Light_dark_toggle } from './light-dark-toggle'
 
-export default () => (
+export default (props) => (
   <ThemeToggler >
     {({ theme, toggleTheme }) => (
 

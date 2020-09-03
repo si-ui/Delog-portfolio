@@ -3,7 +3,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import 'prismjs/themes/prism-okaidia.css'
 import PropTypes from "prop-types"
 import { motion, AnimatePresence } from 'framer-motion'
-import Navigation from "../components/navigation"
+import NavigationItems from "../components/navigation"
+// import Navbar from "../components/navbar"
 
 const duration = 0.5
 
@@ -44,7 +45,8 @@ const Layout = ({ children, location }) => {
     <div className="site-wrapper">
     
     
-    <Navigation/>
+    <NavigationItems/>
+    {/* <Navbar/> */}
       
 
       <div className="main-content">

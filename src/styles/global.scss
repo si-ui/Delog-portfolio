@@ -27,6 +27,9 @@ body.light {
   --contact-bg: #f7f8fe;
   --contact-bdr: #d3d6e7;
   --input-bg: var(--background);
+  --hamburgerbg-initial: rgba(222,222,222,0);
+  --hamburgerbg-hover: rgba(222,222,222,1);
+  --hamburger: hsl(0, 100%, 100%);
 }
 body.dark {
   --primary-color: #9984d5;
@@ -49,6 +52,9 @@ body.dark {
   --contact-bg: var(--card-shadow);
   --contact-bdr: var(--card-bg);
   --input-bg: var(--card-bg);
+  --hamburgerbg-initial: rgba(10, 4, 28, 0);
+  --hamburgerbg-hover: rgba(10, 4, 28, 1);
+  --hamburger: hsl(0, 0%, 18%);
 }
 /* System Fonts as used by Medium and WordPress */
 body {
